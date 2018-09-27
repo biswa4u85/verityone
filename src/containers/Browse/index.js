@@ -30,25 +30,7 @@ class Browse extends Component {
     }
 
     componentDidMount() {
-        // const { user } = this.props
-        // this.setState({ isLoading: true });
-        // VerityAPI.searchApi(user.userId, '', (success, data, error) => {
-        //     if (success) {
-        //         let tempData = {}
-        //         for (let item of data.result) {
-        //             if (item.category in tempData === false) {
-        //                 tempData[item.category] = [item.category, item.productImage]
-        //             }
-        //         }
-        //         this.setState({ searchResults: tempData });
-        //         this.setState({ isLoading: false });
-        //     }
-        //     else if (error) {
-        //         console.log(error)
-        //         this.setState({ isLoading: false });
-        //         return this.stopAndToast(Languages.GetDataError);
-        //     }
-        // });
+
     }
 
     checkConnection() {
@@ -85,7 +67,7 @@ class Browse extends Component {
                         </View>
                         <View style={styles.catagoryContainer}>
                             <ImageBackground
-                                source={Images.browse}
+                                source={Images.userPoint}
                                 style={styles.catagoryImage}>
                                 <TouchableOpacity style={styles.catBox} onPress={navigate('UserPoints')}>
                                     <Text style={styles.greyTxt}>User Points</Text>
@@ -94,7 +76,7 @@ class Browse extends Component {
                         </View>
                         <View style={styles.catagoryContainer}>
                             <ImageBackground
-                                source={Images.browse}
+                                source={Images.coupon}
                                 style={styles.catagoryImage}>
                                 <TouchableOpacity style={styles.catBox} onPress={navigate('Coupons')}>
                                     <Text style={styles.greyTxt}>Coupons</Text>
@@ -103,7 +85,7 @@ class Browse extends Component {
                         </View>
                         <View style={styles.catagoryContainer}>
                             <ImageBackground
-                                source={Images.browse}
+                                source={Images.citizenscientest}
                                 style={styles.catagoryImage}>
                                 <TouchableOpacity style={styles.catBox} onPress={navigate('Citizen')}>
                                     <Text style={styles.greyTxt}>Citizen Scientist Project</Text>

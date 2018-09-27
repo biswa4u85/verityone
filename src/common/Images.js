@@ -1,6 +1,6 @@
 const Images = {
   loginLogo: require('@images/loginLogo.png'),
-  dashBoardLogo: require('@images/logo-new.png'),
+  dashBoardLogo: require('@images/logo-new.png'),  
   fbLogin: require('@images/fbLogin.png'),
   googleLogin: require('@images/googleLogin.png'),
   calendar: require('@images/calendar.png'),
@@ -14,6 +14,9 @@ const Images = {
   scanIcon: require('@images/scanIcon.jpg'),
   mobIcon: require('@images/mobIcon.jpg'),
   browse: require('@images/browse.png'),
+  userPoint:require('@images/userpoints.png'),
+  coupon:require('@images/coupons.png'),
+  citizenscientest:require('@images/citizenscientist.png'),
   chat: require('@images/chat.png'),
   top1: require('@images/top1.png'),
   top2: require('@images/top2.png'),
