@@ -4,11 +4,10 @@ import React from 'react'
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import { Color, Images, Icons } from '@common'
 import { TabBar, TabBarIcon } from '@components'
-import { Login, Forgot, Barcode, HomeScan, Picks, Pick } from "@containers";
+import { Login, Forgot, SignUp, Browse, Recalls, UserPoints, Coupons, Citizen, Barcode, HomeScan, Picks, Pick } from "@containers";
 
 import CustomPageScreen from './CustomPageScreen'
 import AuthScreen from './AuthScreen'
-import SignUpScreen from './SignUpScreen'
 import DashboardScreen from './DashboardScreen'
 import SearchScreen from './SearchScreen'
 import SearchDetailsScreen from './SearchDetailsScreen'
@@ -17,7 +16,6 @@ import ScansScreen from './ScansScreen'
 import ScanScreen from './ScanScreen'
 import MessagesScreen from './MessagesScreen'
 import ChatScreen from './ChatScreen'
-import BrowseScreen from './BrowseScreen'
 
 const DashboardStack = StackNavigator({
     Dashboard: { screen: DashboardScreen },
@@ -43,7 +41,11 @@ const ChatUsersStack = StackNavigator({
 
 
 const BrowseStack = StackNavigator({
-    Browse: { screen: BrowseScreen },
+    Browse: { screen: Browse },
+    Recalls: { screen: Recalls },
+    UserPoints: { screen: UserPoints },
+    Coupons: { screen: Coupons },
+    Citizen: { screen: Citizen }
 })
 
 const AppNavigator = TabNavigator({
@@ -157,7 +159,7 @@ const MainNavigator = StackNavigator({
     Auth: { screen: AuthScreen },
     Login: { screen: Login },
     Forgot: { screen: Forgot },
-    Signup: { screen: SignUpScreen },
+    Signup: { screen: SignUp },
     pickup13: { screen: pickup13Screen, navigationOptions: { header: null } },
     Main: { screen: AppNavigator, navigationOptions: { header: null } },
 }, {
