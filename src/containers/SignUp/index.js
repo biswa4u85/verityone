@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, TextInput, Image } from 'react-native';
-import { Languages, Images, Color } from "@common";
+import { Languages, Images, Color, Styles } from "@common";
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import RadioForm from 'react-native-simple-radio-button';
 // import ImagePicker from 'react-native-image-picker';
@@ -11,9 +11,18 @@ import Spinner from '@components/Spinner';
 import VerityAPI from '@services/VerityAPI'
 import FirebaseAPI from '@services/FirebaseAPI'
 import FirebaseAuth from '@services/FirebaseAuth'
+import { Back, Logo, EmptyView } from '../../navigation/IconNav'
 import styles from './styles'
 
 class SignUp extends Component {
+
+  static navigationOptions = ({ navigation }) => ({
+    headerLeft: Back(navigation),
+    headerTitle: Logo(),
+    headerRight: EmptyView(),
+    headerStyle: Styles.Common.toolbarFloat,
+  })
+
   constructor(props) {
     super(props);
     this.state = {
@@ -78,8 +87,8 @@ class SignUp extends Component {
   };
 
   onSignUpHandle() {
-
-    const { netInfo, login, onViewMainScreen } = this.props;
+    const { navigate } = this.props.navigation;
+    const { netInfo, login } = this.props;
     const { uid, profileImage, genderType, name, mobile, email, password, address, DOB, isLoading } = this.state;
     if (!netInfo.isConnected) return toast(Languages.noConnection);
 
@@ -94,7 +103,7 @@ class SignUp extends Component {
     FirebaseAuth.registerWithEmail(user, (success, data, error) => {
       if (success) {
         login(data.profile)
-        onViewMainScreen()
+        navigate('Main')
         this.setState({ isLoading: false });
       }
       else if (error) {

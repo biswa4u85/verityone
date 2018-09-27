@@ -5,14 +5,14 @@ import { connect } from 'react-redux'
 import { Spinner, ButtonIndex } from '@components'
 import { Languages, Images, Color, Styles } from '@common'
 import FirebaseAuth from '@services/FirebaseAuth'
-import { Back, EmptyView } from '../../navigation/IconNav'
+import { Back, Logo, EmptyView } from '../../navigation/IconNav'
 import styles from './styles'
 
 class Forgot extends Component {
 
     static navigationOptions = ({ navigation }) => ({
         headerLeft: Back(navigation),
-        headerTitle: EmptyView(),
+        headerTitle: Logo(),
         headerRight: EmptyView(),
         headerStyle: Styles.Common.toolbarFloat,
     })

@@ -6,9 +6,9 @@ import { Spinner } from '@components'
 import { Languages, Images, Styles } from '@common'
 import VerityAPI from '@services/VerityAPI'
 import { Menu, Logo, EmptyView } from '../../navigation/IconNav'
-import styles from './styles'
+import styles from './recallsStyles'
 
-class Browse extends Component {
+class Recalls extends Component {
 
     static navigationOptions = ({ navigation }) => ({
         headerLeft: Menu(),
@@ -30,25 +30,7 @@ class Browse extends Component {
     }
 
     componentDidMount() {
-        // const { user } = this.props
-        // this.setState({ isLoading: true });
-        // VerityAPI.searchApi(user.userId, '', (success, data, error) => {
-        //     if (success) {
-        //         let tempData = {}
-        //         for (let item of data.result) {
-        //             if (item.category in tempData === false) {
-        //                 tempData[item.category] = [item.category, item.productImage]
-        //             }
-        //         }
-        //         this.setState({ searchResults: tempData });
-        //         this.setState({ isLoading: false });
-        //     }
-        //     else if (error) {
-        //         console.log(error)
-        //         this.setState({ isLoading: false });
-        //         return this.stopAndToast(Languages.GetDataError);
-        //     }
-        // });
+
     }
 
     checkConnection() {
@@ -65,8 +47,7 @@ class Browse extends Component {
 
     render() {
         const { navigate } = this.props.navigation;
-        const { search } = this.props
-        const { isLoading, searchtext, searchResults } = this.state
+        const { isLoading } = this.state
         return (
             <View style={styles.container}>
                 <ScrollView>
@@ -78,7 +59,7 @@ class Browse extends Component {
                             <ImageBackground
                                 source={Images.browse}
                                 style={styles.catagoryImage}>
-                                <TouchableOpacity style={styles.catBox} onPress={navigate('Recalls')}>
+                                <TouchableOpacity style={styles.catBox} onPress={navigate('recalls')}>
                                     <Text style={styles.greyTxt}>Recalls</Text>
                                 </TouchableOpacity>
                             </ImageBackground>
@@ -87,7 +68,7 @@ class Browse extends Component {
                             <ImageBackground
                                 source={Images.browse}
                                 style={styles.catagoryImage}>
-                                <TouchableOpacity style={styles.catBox} onPress={navigate('UserPoints')}>
+                                <TouchableOpacity style={styles.catBox} onPress={navigate('user points')}>
                                     <Text style={styles.greyTxt}>User Points</Text>
                                 </TouchableOpacity>
                             </ImageBackground>
@@ -96,7 +77,7 @@ class Browse extends Component {
                             <ImageBackground
                                 source={Images.browse}
                                 style={styles.catagoryImage}>
-                                <TouchableOpacity style={styles.catBox} onPress={navigate('Coupons')}>
+                                <TouchableOpacity style={styles.catBox} onPress={navigate('coupons')}>
                                     <Text style={styles.greyTxt}>Coupons</Text>
                                 </TouchableOpacity>
                             </ImageBackground>
@@ -105,7 +86,7 @@ class Browse extends Component {
                             <ImageBackground
                                 source={Images.browse}
                                 style={styles.catagoryImage}>
-                                <TouchableOpacity style={styles.catBox} onPress={navigate('Citizen')}>
+                                <TouchableOpacity style={styles.catBox} onPress={navigate('citizen scientist project')}>
                                     <Text style={styles.greyTxt}>Citizen Scientist Project</Text>
                                 </TouchableOpacity>
                             </ImageBackground>
@@ -126,4 +107,4 @@ const mapDispatchToProps = (dispatch) => {
         setSearchRes: (searchRes) => dispatch(actions.setSearchRes(searchRes)),
     };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Browse)
+export default connect(mapStateToProps, mapDispatchToProps)(Recalls)

@@ -49,6 +49,18 @@ export const Chat = _Chat;
 import _Browse from './Browse';
 export const Browse = _Browse;
 
+import _Recalls from './Browse/recalls';
+export const Recalls = _Recalls;
+
+import _UserPoints from './Browse/userPoints';
+export const UserPoints = _UserPoints;
+
+import _Coupons from './Browse/coupons';
+export const Coupons = _Coupons;
+
+import _Citizen from './Browse/citizen';
+export const Citizen = _Citizen;
+
 import _HomeScan from './Pickup13/home';
 export const HomeScan = _HomeScan;
 
