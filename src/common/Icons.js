@@ -5,6 +5,9 @@ const Entypo = {
     Grid: 'grid',
     Message: 'message',
     Notification: 'notification',
+    Camera: 'camera',
+    Folder: 'folder-images',
+    Barcode: 'air',
 };
 
 const MaterialCommunityIcons = {

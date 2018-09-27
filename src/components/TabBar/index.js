@@ -50,7 +50,7 @@ class TabBar extends PureComponent {
         } = navigation.state;
 
 
-        const ignoreScreen = ['Custompage', 'Scan', 'Search', 'SearchDetails']
+        const ignoreScreen = ['Custompage', 'Search', 'SearchDetails', 'AboutUs', 'Location']
 
         return (
             <View key="1" style={styles.tabbar}>

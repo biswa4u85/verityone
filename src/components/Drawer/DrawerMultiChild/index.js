@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { View, ScrollView, Image, I18nManager } from 'react-native'
+import { View, ScrollView, Image, I18nManager, TouchableOpacity } from 'react-native'
 import { Images } from "@common";
 import { connect } from 'react-redux'
 import { Text } from '@components'
@@ -59,6 +59,7 @@ class DrawerMultiChild extends PureComponent {
       backgroundMenu,
       colorTextMenu,
     } = this.props
+    const { goToScreen } = this.props
     const user = userProfile.user
     const avatar = (user && user.profileImage) ? { uri: user.profileImage } : Images.loginLogo
     return (
@@ -76,11 +77,12 @@ class DrawerMultiChild extends PureComponent {
               backgroundColor: backgroundMenu,
             },
           ]}>
-          <Image
-            source={avatar}
-            style={[styles.avatar, I18nManager.isRTL && { left: -20 }]}
-          />
-
+          <TouchableOpacity onPress={() => goToScreen('Signup')}>
+            <Image
+              source={avatar}
+              style={[styles.avatar, I18nManager.isRTL && { left: -20 }]}
+            />
+          </TouchableOpacity>
           <View style={styles.textContainer}>
             <Text
               style={[

@@ -1,11 +1,5 @@
 import { Constants } from '@common';
 
-// import _Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-// export const Icon = _Icon;
-
-// import _IconIO from 'react-native-vector-icons/Ionicons';
-// export const IconIO = _IconIO;
-
 import _EventEmitter from 'EventEmitter';
 export const EventEmitter = new _EventEmitter();
 
@@ -80,7 +74,7 @@ export const getProductImage = (uri, containerWidth) => {
     //parse uri into parts
     const index = uri.lastIndexOf('.');
     let editedURI = uri.slice(0, index);
-    let defaultType = uri.slice(index, );
+    let defaultType = uri.slice(index);
 
     const SMALL = Config.ProductSize.ProductThumbnails;
     const MEDIUM = Config.ProductSize.CatalogImages;

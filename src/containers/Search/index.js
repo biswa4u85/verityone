@@ -4,11 +4,20 @@ import { toast, error, Validate } from '@app/Omni';
 import { connect } from 'react-redux'
 import Parallax from 'react-native-parallax'
 import { Spinner, ButtonIndex } from '@components'
-import { Languages, Images, Color } from '@common'
+import { Languages, Images, Color, Styles } from '@common'
+import { Menu, Logo, EmptyView } from '../../navigation/IconNav'
 import VerityAPI from '@services/VerityAPI'
 import styles from './styles'
 
 class Search extends Component {
+
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft: Menu(),
+        headerTitle: Logo(),
+        headerRight: EmptyView(),
+        headerStyle: Styles.Common.toolbarFloat,
+    })
+
     constructor(props) {
         super(props)
         this.state = {
@@ -23,20 +32,20 @@ class Search extends Component {
 
     componentDidMount(prevProps) {
         const { search, user } = this.props
-        if (search || search !== prevProps.search) {
-            this.setState({ isLoading: true });
-            VerityAPI.searchApi(user.userId, search, (success, data, error) => {
-                if (success) {
-                    this.setState({ searchResults: data.result });
-                    this.setState({ isLoading: false });
-                }
-                else if (error) {
-                    console.log(error)
-                    this.setState({ isLoading: false });
-                    return this.stopAndToast(Languages.GetDataError);
-                }
-            });
-        }
+        // if (search && search !== prevProps.search) {
+        //     this.setState({ isLoading: true });
+        //     VerityAPI.searchApi(user.userId, search, (success, data, error) => {
+        //         if (success) {
+        //             this.setState({ searchResults: data.result });
+        //             this.setState({ isLoading: false });
+        //         }
+        //         else if (error) {
+        //             console.log(error)
+        //             this.setState({ isLoading: false });
+        //             return this.stopAndToast(Languages.GetDataError);
+        //         }
+        //     });
+        // }
     }
 
     checkConnection() {
@@ -58,9 +67,10 @@ class Search extends Component {
     }
 
     _searchDetails(search) {
-        const { setSearchRes, onViewSearchDetailsScreen } = this.props
+        const { navigate } = this.props.navigation;
+        const { setSearchRes } = this.props
         setSearchRes(search)
-        onViewSearchDetailsScreen()
+        navigate('SearchDetails')
     }
 
     render() {

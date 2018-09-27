@@ -4,16 +4,13 @@ import React from 'react'
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import { Color, Images, Icons } from '@common'
 import { TabBar, TabBarIcon } from '@components'
-import { Login, Forgot, SignUp, Browse, Recalls, UserPoints, Coupons, Citizen, Barcode, HomeScan, Picks, Pick } from "@containers";
+import { Login, Forgot, SignUp, Search, Browse, Recalls, UserPoints, Coupons, Citizen, Barcode, HomeScan, Picks, Pick, AboutUs, Location } from "@containers";
 
 import CustomPageScreen from './CustomPageScreen'
 import AuthScreen from './AuthScreen'
 import DashboardScreen from './DashboardScreen'
-import SearchScreen from './SearchScreen'
 import SearchDetailsScreen from './SearchDetailsScreen'
 import WalletScreen from './WalletScreen'
-import ScansScreen from './ScansScreen'
-import ScanScreen from './ScanScreen'
 import MessagesScreen from './MessagesScreen'
 import ChatScreen from './ChatScreen'
 
@@ -29,11 +26,6 @@ const BarcodeStack = StackNavigator({
     Barcode: { screen: Barcode },
 })
 
-const ScanStack = StackNavigator({
-    Scans: { screen: ScansScreen },
-    Scan: { screen: ScanScreen },
-})
-
 const ChatUsersStack = StackNavigator({
     messages: MessagesScreen,
     Chat: ChatScreen,
@@ -46,6 +38,18 @@ const BrowseStack = StackNavigator({
     UserPoints: { screen: UserPoints },
     Coupons: { screen: Coupons },
     Citizen: { screen: Citizen }
+})
+
+const AboutUsStack = StackNavigator({
+    AboutUs: { screen: AboutUs }
+})
+
+const LocationStack = StackNavigator({
+    Location: { screen: Location }
+})
+
+const SearchStack = StackNavigator({
+    Search: { screen: Search }
 })
 
 const AppNavigator = TabNavigator({
@@ -66,7 +70,7 @@ const AppNavigator = TabNavigator({
     Barcode: {
         screen: BarcodeStack,
         navigationOptions: {
-            tabBarIcon: ({ tintColor }) => <TabBarIcon type={'Mat'} icon={Icons.MaterialCommunityIcons.Barcode}
+            tabBarIcon: ({ tintColor }) => <TabBarIcon type={'Mat'} icon={Icons.Entypo.Barcode}
                 tintColor={tintColor} />
         }
     },
@@ -77,7 +81,7 @@ const AppNavigator = TabNavigator({
                 tintColor={tintColor} />
         }
     },
-    Browse: {
+    BrowsePage: {
         screen: BrowseStack,
         navigationOptions: {
             tabBarIcon: ({ tintColor }) => <TabBarIcon name={'Browse'} icon={Icons.Entypo.Grid}
@@ -85,9 +89,10 @@ const AppNavigator = TabNavigator({
         }
     },
     Custompage: { screen: CustomPageScreen },
-    Search: { screen: SearchScreen },
+    Search: { screen: SearchStack },
     SearchDetails: { screen: SearchDetailsScreen },
-    Scan: { screen: ScanStack },
+    AboutUs: { screen: AboutUsStack },
+    Location: { screen: LocationStack },
 },
     {
         tabBarComponent: TabBar,
@@ -128,14 +133,14 @@ const pickup13Screen = TabNavigator({
     PickScreen: {
         screen: PickStack,
         navigationOptions: {
-            tabBarIcon: ({ tintColor }) => <TabBarIcon name={'Home'} icon={Icons.Entypo.Home}
+            tabBarIcon: ({ tintColor }) => <TabBarIcon name={'Camera'} icon={Icons.Entypo.Camera}
                 tintColor={tintColor} />
         }
     },
     PicksScreen: {
         screen: PicksStack,
         navigationOptions: {
-            tabBarIcon: ({ tintColor }) => <TabBarIcon name={'Home'} icon={Icons.Entypo.Home}
+            tabBarIcon: ({ tintColor }) => <TabBarIcon name={'Folder'} icon={Icons.Entypo.Folder}
                 tintColor={tintColor} />
         }
     },
@@ -156,9 +161,9 @@ const pickup13Screen = TabNavigator({
 )
 
 const MainNavigator = StackNavigator({
-    Auth: { screen: AuthScreen },
-    Login: { screen: Login },
-    Forgot: { screen: Forgot },
+    // Auth: { screen: AuthScreen },
+    // Login: { screen: Login },
+    // Forgot: { screen: Forgot },
     Signup: { screen: SignUp },
     pickup13: { screen: pickup13Screen, navigationOptions: { header: null } },
     Main: { screen: AppNavigator, navigationOptions: { header: null } },
