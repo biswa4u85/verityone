@@ -4,7 +4,7 @@ import React from 'react'
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import { Color, Images, Icons } from '@common'
 import { TabBar, TabBarIcon } from '@components'
-import { Login, Forgot } from "@containers";
+import { Login, Forgot, Barcode } from "@containers";
 
 import CustomPageScreen from './CustomPageScreen'
 import AuthScreen from './AuthScreen'
@@ -15,7 +15,6 @@ import SearchDetailsScreen from './SearchDetailsScreen'
 import WalletScreen from './WalletScreen'
 import ScansScreen from './ScansScreen'
 import ScanScreen from './ScanScreen'
-import BarcodeScreen from './BarcodeScreen'
 import MessagesScreen from './MessagesScreen'
 import ChatScreen from './ChatScreen'
 import BrowseScreen from './BrowseScreen'
@@ -29,7 +28,7 @@ const WalletStack = StackNavigator({
 })
 
 const BarcodeStack = StackNavigator({
-    Barcode: { screen: BarcodeScreen },
+    Barcode: { screen: Barcode },
 })
 
 const ScanStack = StackNavigator({
