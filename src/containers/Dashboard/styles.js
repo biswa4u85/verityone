@@ -27,21 +27,26 @@ export default StyleSheet.create({
         alignItems: 'center',
         color: '#ffffff',
     },
-    shoppingPoint: {
-        fontSize: 14,
+    shoppingPoint: {        
         flexDirection: 'row',
-        alignItems: 'center',
+        alignItems: 'center',        
+    },
+    shoppPointText:{
         color: '#C7C7C7',
+        fontSize: 14,
     },
     dashLogo: {
-        flexDirection: 'row',
+        paddingVertical:15,
         alignItems: 'center',
-        marginTop: 15,
-        marginBottom: 15,
+        marginVertical: 15,        
+        backgroundColor:'#fff',
+        borderRadius:50,
+        width: 100,
+        height:100,    
     },
     dashLogoSize: {
-        width: 100,
-        height: 100,
+        width: 80,
+        height:80,        
     },
     yellowTxt: {
         fontSize: 14,
@@ -71,14 +76,13 @@ export default StyleSheet.create({
         flexDirection: 'column',
     },
     scanBox: {
-        backgroundColor: '#FCCA1D',
+        backgroundColor: '#59a153',
         borderRadius: 4,
         padding: 10,
         margin: 16,
         flexDirection: 'row',
     },
-    scanImg: {
-        backgroundColor: '#ffffff',
+    scanImg: {        
         width: 57,
         height: 57,
         marginRight: 15,
@@ -89,6 +93,18 @@ export default StyleSheet.create({
         flex: 1,
         fontSize: 17,
         color: '#000',
+    },
+    wlcTxtArea:{
+        flex:1,
+    },
+    wlcTitleTxt: {      
+        fontSize: 18,
+        color: '#fff',
+        fontWeight:'bold',
+    },
+    wlcsubTilTxt: {       
+        fontSize: 14,
+        color: '#fff',        
     },
     recentScanBox: {
         backgroundColor: '#fff',

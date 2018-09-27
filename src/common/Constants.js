@@ -5,7 +5,7 @@ const Constants = {
   RTL: false,
   useReactotron: true,
   Language: 'English', // Arabic
-  fontFamily: 'Helvetica',
+  // fontFamily: 'Helvetica',
   fontHeader: 'baloo',
   fontHeaderAndroid: 'baloo',
   WordPress: {

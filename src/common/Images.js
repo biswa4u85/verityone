@@ -1,11 +1,13 @@
 const Images = {
   loginLogo: require('@images/loginLogo.png'),
+  dashBoardLogo: require('@images/logo-new.png'),
   fbLogin: require('@images/fbLogin.png'),
   googleLogin: require('@images/googleLogin.png'),
   calendar: require('@images/calendar.png'),
   upload: require('@images/upload.png'),
   avatarImg: require('@images/default_avatar.jpg'),
   scanImg: require('@images/scanImg.png'),
+  welcomeImg: require('@images/welcome-img.png'),
   addImg: require('@images/add.png'),
   searchImg: require('@images/search.png'),
   barcodeBg: require('@images/barcodeBg.jpg'),

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import * as firebase from 'firebase';
 import { ScrollView, ImageBackground, TouchableOpacity, TextInput, Image, View, Text } from 'react-native';
+import ModalFilterPicker from 'react-native-modal-filter-picker';
 import { Languages, Images } from "@common";
 import { toast, error } from '@app/Omni';
 import { connect } from 'react-redux';
@@ -17,13 +18,16 @@ import styles from './styles'
 // request.addKeyword('foobar');
 
 class Dashboard extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props, ctx) {
+    super(props, ctx);
     this.state = {
       user: '',
       searchtext: '',
       picks: null,
       isLoading: false,
+
+      visible: false,
+      picked: null,
     };
 
     this.checkConnection = this.checkConnection.bind(this)
@@ -93,9 +97,48 @@ class Dashboard extends Component {
     }
   }
 
+  onShow = () => {
+    this.setState({ visible: true });
+  }
+ 
+  onSelect = (picked) => {
+    this.setState({
+      picked: picked,
+      visible: false
+    })
+  }
+ 
+  onCancel = () => {
+    this.setState({
+      visible: false
+    });
+  }
+
   render() {
     const { onViewScanscreen, onViewScancreen } = this.props
-    const { isLoading, picks, searchtext } = this.state;
+    const { isLoading, picks, searchtext, visible, picked } = this.state;
+    const options = [
+      {
+        key: 'kenya',
+        label: 'Kenya',
+      },
+      {
+        key: 'uganda',
+        label: 'Uganda',
+      },
+      {
+        key: 'libya',
+        label: 'Libya',
+      },
+      {
+        key: 'morocco',
+        label: 'Morocco',
+      },
+      {
+        key: 'estonia',
+        label: 'Estonia',
+      },
+    ];
     return (
       <View style={styles.container}>
         <ScrollView>
@@ -105,10 +148,22 @@ class Dashboard extends Component {
             {Dashmenu('white')}
             <View style={{ alignItems: 'center' }}>
               <Text style={styles.pageTitle}>Verity One</Text>
-              <Text style={styles.shoppingPoint}>Shopping in 33431</Text>
+              {/* <TouchableOpacity style={styles.shoppingPoint}><Text style={styles.shoppPointText}>Shopping in 33431</Text></TouchableOpacity> */}
+              <View>
+                <TouchableOpacity style={styles.shoppingPoint} onPress={this.onShow}>
+                  <Text style={styles.shoppPointText}>Shopping in 33431 </Text>
+                </TouchableOpacity>                
+                <Text>{picked}</Text>
+                <ModalFilterPicker
+                  visible={visible} 
+                  onSelect={this.onSelect}
+                  onCancel={this.onCancel}
+                  options={options}
+                />
+              </View>
             </View>
             <View style={styles.dashLogo}>
-              <Image style={styles.dashLogoSize} source={Images.loginLogo} />
+              <Image style={styles.dashLogoSize} source={Images.dashBoardLogo} />
             </View>
             <View style={styles.searchBox}>
               <Image style={styles.searchImg} source={Images.searchImg} />
@@ -118,8 +173,11 @@ class Dashboard extends Component {
           <View style={styles.contentBox}>
             <TouchableOpacity onPress={() => onViewScancreen()}>
               <View style={styles.scanBox}>
-                <View style={styles.scanImg}><Image source={Images.scanImg} /></View>
-                <Text style={styles.scanText}>Lorem Lipsum is simply Lorem Lipsum is simply. Lorem</Text>
+                <View style={styles.scanImg}><Image source={Images.welcomeImg} /></View>
+                <View style={styles.wlcTxtArea}>
+                  <Text style={styles.wlcTitleTxt}>Welcome to Verity One!</Text>
+                  <Text style={styles.wlcsubTilTxt}>Start by scanning 5 of your fevorite products!</Text>
+                </View>
               </View>
             </ TouchableOpacity>
             <View style={styles.recentScanBox}>
