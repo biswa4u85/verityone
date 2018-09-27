@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import * as firebase from 'firebase';
 import { ScrollView, ImageBackground, TouchableOpacity, TextInput, Image, View, Text } from 'react-native';
 import ModalFilterPicker from 'react-native-modal-filter-picker';
+// import SearchBar from 'react-native-search-bar';
 import { Languages, Images } from "@common";
 import { toast, error } from '@app/Omni';
 import { connect } from 'react-redux';
@@ -14,7 +15,7 @@ import styles from './styles'
 // const advert = firebase.admob().interstitial('ca-app-pub-3325757019134880~7123715667');
 // const Banner = firebase.admob.Banner;
 // const AdRequest = firebase.admob.AdRequest;
-// const request = new AdRequest();
+// const request = new AdRequest();g
 // request.addKeyword('foobar');
 
 class Dashboard extends Component {
@@ -22,7 +23,7 @@ class Dashboard extends Component {
     super(props, ctx);
     this.state = {
       user: '',
-      searchtext: '',
+      // searchtext: '',
       picks: null,
       isLoading: false,
 
@@ -73,12 +74,12 @@ class Dashboard extends Component {
     this.setState({ isLoading: false });
   }
 
-  _search() {
-    const { searchtext } = this.state;
-    const { setSearch, onViewSearchScreen } = this.props
-    setSearch(searchtext)
-    onViewSearchScreen()
-  }
+  // _search() {
+  //   const { searchtext } = this.state;
+  //   const { setSearch, onViewSearchScreen } = this.props
+  //   setSearch(searchtext)
+  //   onViewSearchScreen()
+  // }
 
   _randerPicks() {
     const { picks } = this.state;
@@ -100,19 +101,21 @@ class Dashboard extends Component {
   onShow = () => {
     this.setState({ visible: true });
   }
- 
+
   onSelect = (picked) => {
     this.setState({
       picked: picked,
       visible: false
     })
   }
- 
+
   onCancel = () => {
     this.setState({
       visible: false
     });
   }
+
+
 
   render() {
     const { onViewScanscreen, onViewScancreen } = this.props
@@ -152,10 +155,10 @@ class Dashboard extends Component {
               <View>
                 <TouchableOpacity style={styles.shoppingPoint} onPress={this.onShow}>
                   <Text style={styles.shoppPointText}>Shopping in 33431 </Text>
-                </TouchableOpacity>                
+                </TouchableOpacity>
                 <Text>{picked}</Text>
                 <ModalFilterPicker
-                  visible={visible} 
+                  visible={visible}
                   onSelect={this.onSelect}
                   onCancel={this.onCancel}
                   options={options}
@@ -165,10 +168,16 @@ class Dashboard extends Component {
             <View style={styles.dashLogo}>
               <Image style={styles.dashLogoSize} source={Images.dashBoardLogo} />
             </View>
-            <View style={styles.searchBox}>
-              <Image style={styles.searchImg} source={Images.searchImg} />
-              <TextInput style={{ height: 40, width: '100%', textAlign: 'left' }} value={searchtext} onSubmitEditing={this._search.bind(this)} placeholder="Search Verity" onChangeText={(searchtext) => this.setState({ searchtext })} />
-            </View>
+
+
+            {/* <SearchBar
+              ref='searchBar'
+              placeholder='Search'
+              onChangeText={...}
+              onSearchButtonPress={...}
+              onCancelButtonPress={...}
+            /> */}
+
           </ImageBackground>
           <View style={styles.contentBox}>
             <TouchableOpacity onPress={() => onViewScancreen()}>

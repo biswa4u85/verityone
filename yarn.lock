@@ -4348,6 +4348,12 @@ react-native-scrollable-mixin@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npmjs.org/react-native-scrollable-mixin/-/react-native-scrollable-mixin-1.0.1.tgz#34a32167b64248594154fd0d6a8b03f22740548e"
 
+react-native-search-bar@^3.4.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-search-bar/-/react-native-search-bar-3.4.2.tgz#8606bb1d6b29a26dd5ee86cfae00f7253181736d"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-searchbar@^1.15.0:
   version "1.15.0"
   resolved "https://registry.yarnpkg.com/react-native-searchbar/-/react-native-searchbar-1.15.0.tgz#73c3e62c900abac7bd89f5d6598b0f2f526ca680"
