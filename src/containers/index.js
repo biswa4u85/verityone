@@ -48,3 +48,12 @@ export const Chat = _Chat;
 
 import _Browse from './Browse';
 export const Browse = _Browse;
+
+import _HomeScan from './Pickup13/home';
+export const HomeScan = _HomeScan;
+
+import _Picks from './Pickup13/picks';
+export const Picks = _Picks;
+
+import _Pick from './Pickup13/pick';
+export const Pick = _Pick;

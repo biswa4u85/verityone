@@ -31,6 +31,10 @@ const Images = {
   LogoImage: require('@images/new_logo.png'),
   LogoLoading: require('@images/app.png'),
   Stripe: require('@images/stripe.png'),
+  IconPick1: require('@images/icon1.png'),
+  IconPick2: require('@images/icon2.png'),
+  IconPick3: require('@images/icon3.png'),
+  IconPick4: require('@images/pick4.jpg'),
   Banner: {
   },
 };

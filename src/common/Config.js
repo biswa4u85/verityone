@@ -32,15 +32,20 @@ export default {
             routeName: 'Wallet',
         },
         {
-            text: 'Scans ',
+            text: 'Pickup 13 ',
             icon: 'unread',
-            routeName: 'Scans',
+            routeName: 'pickup13',
         },
-        {
-            text: 'Add Scan ',
-            icon: 'add-to-list',
-            routeName: 'Scan',
-        },
+        // {
+        //     text: 'Scans ',
+        //     icon: 'unread',
+        //     routeName: 'Scans',
+        // },
+        // {
+        //     text: 'Add Scan ',
+        //     icon: 'add-to-list',
+        //     routeName: 'Scan',
+        // },
         {
             text: 'Messages ',
             icon: 'chat',
