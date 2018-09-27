@@ -81,14 +81,14 @@ class Messages extends Component {
             </View>
           </Tab>
         </Tabs>
-        <View style={styles.privateArea}>
+        {/* <View style={styles.privateArea}>
           <View style={styles.privateBg}>
             <Text style={styles.privateTitle}>Private Message</Text>
             <TouchableOpacity style={styles.addIcon}>
               <Text style={styles.addIconTxt}>+</Text>
             </TouchableOpacity>
           </View>
-        </View>
+        </View> */}
       </View>
     )
   }
