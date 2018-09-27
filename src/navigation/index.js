@@ -4,7 +4,7 @@ import React from 'react'
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import { Color, Images, Icons } from '@common'
 import { TabBar, TabBarIcon } from '@components'
-import { Login, Forgot } from "@containers";
+import { Login, Forgot, Barcode, HomeScan, Picks, Pick } from "@containers";
 
 import CustomPageScreen from './CustomPageScreen'
 import AuthScreen from './AuthScreen'
@@ -15,7 +15,6 @@ import SearchDetailsScreen from './SearchDetailsScreen'
 import WalletScreen from './WalletScreen'
 import ScansScreen from './ScansScreen'
 import ScanScreen from './ScanScreen'
-import BarcodeScreen from './BarcodeScreen'
 import MessagesScreen from './MessagesScreen'
 import ChatScreen from './ChatScreen'
 import BrowseScreen from './BrowseScreen'
@@ -29,7 +28,7 @@ const WalletStack = StackNavigator({
 })
 
 const BarcodeStack = StackNavigator({
-    Barcode: { screen: BarcodeScreen },
+    Barcode: { screen: Barcode },
 })
 
 const ScanStack = StackNavigator({
@@ -103,11 +102,63 @@ const AppNavigator = TabNavigator({
     }
 )
 
+const HomeScanStack = StackNavigator({
+    HomeScan: { screen: HomeScan },
+})
+
+const PicksStack = StackNavigator({
+    Picks: { screen: Picks },
+})
+
+const PickStack = StackNavigator({
+    Pick: { screen: Pick },
+})
+
+const pickup13Screen = TabNavigator({
+    Default: {
+        screen: HomeScanStack,
+        navigationOptions: {
+            tabBarIcon: ({ tintColor }) => <TabBarIcon name={'Home'} icon={Icons.Entypo.Home}
+                tintColor={tintColor} />
+
+        }
+    },
+    PickScreen: {
+        screen: PickStack,
+        navigationOptions: {
+            tabBarIcon: ({ tintColor }) => <TabBarIcon name={'Home'} icon={Icons.Entypo.Home}
+                tintColor={tintColor} />
+        }
+    },
+    PicksScreen: {
+        screen: PicksStack,
+        navigationOptions: {
+            tabBarIcon: ({ tintColor }) => <TabBarIcon name={'Home'} icon={Icons.Entypo.Home}
+                tintColor={tintColor} />
+        }
+    },
+},
+    {
+        tabBarComponent: TabBar,
+        tabBarPosition: 'bottom',
+        swipeEnabled: false,
+        animationEnabled: false,
+        tabBarOptions: {
+            showIcon: true,
+            showLabel: true,
+            activeTintColor: Color.tabbarTint,
+            inactiveTintColor: Color.tabbarColor,
+        },
+        lazy: true
+    }
+)
+
 const MainNavigator = StackNavigator({
     Auth: { screen: AuthScreen },
     Login: { screen: Login },
     Forgot: { screen: Forgot },
     Signup: { screen: SignUpScreen },
+    pickup13: { screen: pickup13Screen, navigationOptions: { header: null } },
     Main: { screen: AppNavigator, navigationOptions: { header: null } },
 }, {
     })
