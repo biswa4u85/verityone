@@ -13,18 +13,31 @@ class CustomPageScreen extends Component {
     headerStyle: Styles.Common.toolbarFloat,
   })
 
-  componentDidMount() {
-
-    const { state, navigate } = this.props.navigation;
-
-    if (state.params && typeof state.params.isLogout) {
-      // FirebaseAuth.doSignOut()
-      // login(null)
-      // setParms(null)
-      // navigate('Auth')
-      return true
+  constructor(props) {
+    super(props)
+    this.state = {
+      reRander: false,
     }
+  }
 
+  componentDidUpdate(prevProps) {
+    const { state, navigate } = this.props.navigation;
+    if (navigate !== prevProps.navigate) {
+      if (typeof state.params.isLogout != 'undefined') {
+        this.checkLogout()
+      }
+    }
+  }
+
+  checkLogout() {
+    const { login, setParms } = this.props;
+    const { state, navigate } = this.props.navigation;
+    console.log('a')
+    // FirebaseAuth.doSignOut()
+    // login(null)
+    // setParms(null)
+    // navigate('Auth')
+    return true
   }
 
   render() {
@@ -33,6 +46,10 @@ class CustomPageScreen extends Component {
 
     if (typeof state.params.url != 'undefined') {
       return <WebView source={{ url: state.params.url }} />
+    }
+
+    if (typeof state.params.isLogout != 'undefined') {
+      this.checkLogout()
     }
 
     return <Spinner mode={'overlay'} />
