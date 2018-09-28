@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { View, WebView } from 'react-native'
 import { connect } from 'react-redux';
 import { Styles } from '@common'
-import { Back, EmptyView } from './IconNav'
+import { Back, Logo, EmptyView } from './IconNav'
 import { Spinner } from '@components'
 
 class CustomPageScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     headerLeft: Back(navigation),
-    headerTitle: EmptyView(),
+    headerTitle: Logo(),
     headerRight: EmptyView(),
     headerStyle: Styles.Common.toolbarFloatActive,
   })
