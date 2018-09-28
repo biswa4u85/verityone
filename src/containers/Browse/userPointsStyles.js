@@ -5,47 +5,7 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: Color.background,
-    },
-    searchBox: {
-        backgroundColor: '#fff',
-        borderRadius: 4,
-        flexDirection: 'row',
-        marginTop: 10,
-        marginLeft: 10,
-        marginRight: 10,
-        alignItems: 'center',
-        height: 40,
-    },
-    searchImg: {
-        marginLeft: 10,
-        marginRight: 10,
-        width: 30,
-        height: 30,
-    },
-    searchText: {
-        height: 40,
-        width: '100%',
-        fontSize: 20,
-        textAlign: 'left'
-    },
-    arrangeColomn: {
-        flex: 1,
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    catagoryContainer: {
-        width: '48%',
-        borderRadius: 5,
-        backgroundColor: '#000',
-        overflow: 'hidden',
-        margin: '1%',
-    },
-    catagoryImage: {
-        width: '100%',
-        height: 180,
-    },
+    },    
     catBox: {
         // backgroundColor: '#000',
         // opacity: 0.5,
@@ -53,26 +13,34 @@ export default StyleSheet.create({
         height: '100%',
         alignItems: 'flex-start',
         justifyContent: 'flex-end',
-    },
-    greyTxt: {
-        color: Color.white,
-        padding: 10,
-        fontSize: 20,
-    },
+    },   
     scanBoxTop: {
-        flexDirection: 'row',
-    },
-    inlineItem: {
-        flexDirection: 'row',
-        padding: 20
-    },
-    searchText: {
-        color: Color.grey,
-        fontSize: 30,
-    },
+        
+    },   
     catText: {
         color: Color.grey,
         padding: 20,
         fontSize: 20,
     },
+    userPointlist:{
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'center',
+        padding:10,
+        borderTopWidth:1,
+        borderColor:Color.grey,
+    },
+    listLeftTxt:{
+        fontSize:20,
+        color:Color.grey,
+    },
+    listRightTxt:{
+        fontSize:20,
+        color:Color.black,
+    },
+    fevoriteProdBox:{
+        paddingBottom:30,
+        width:'100%',
+        flex:1,
+    }
 });

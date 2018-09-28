@@ -74,5 +74,5 @@ export default StyleSheet.create({
         color: Color.grey,
         padding: 20,
         fontSize: 20,
-    },
+    },    
 });

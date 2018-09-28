@@ -52,7 +52,22 @@ class UserPoints extends Component {
             <View style={styles.container}>
                 <ScrollView>
                     <View style={styles.scanBoxTop}>
-                        <Text style={styles.catText}>UserPoints</Text>
+                        <Text style={styles.catText}>Five Fevorite Products</Text>
+                        <View style={styles.fevoriteProdBox}>
+                            <Text>Products go here</Text>
+                        </View>
+                    </View>
+                    <View style={styles.userPointlist}>
+                        <Text style={styles.listLeftTxt}>Invites</Text>
+                        <Text style={styles.listRightTxt}>13</Text>
+                    </View>
+                    <View style={styles.userPointlist}>
+                        <Text style={styles.listLeftTxt}>Pickup 13 Projects</Text>
+                        <Text style={styles.listRightTxt}>27</Text>
+                    </View>
+                    <View style={styles.userPointlist}>
+                        <Text style={styles.listLeftTxt}>Scans</Text>
+                        <Text style={styles.listRightTxt}>7</Text>
                     </View>
                 </ScrollView>
                 {isLoading ? <Spinner mode={'overlay'} /> : null}
