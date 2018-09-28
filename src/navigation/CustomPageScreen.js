@@ -10,7 +10,7 @@ class CustomPageScreen extends Component {
     headerLeft: Back(navigation),
     headerTitle: Logo(),
     headerRight: EmptyView(),
-    headerStyle: Styles.Common.toolbarFloatActive,
+    headerStyle: Styles.Common.toolbarFloat,
   })
 
   componentDidMount() {
