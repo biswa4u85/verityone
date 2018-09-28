@@ -87,11 +87,10 @@ class Login extends Component {
 
         if (!netInfo.isConnected) return toast(Languages.noConnection);
         if (isLoading) return;
-        this.setState({ isLoading: true });
 
         FirebaseAuth.onLoginOrRegisterWithFacebook((success, data, error) => {
             if (success) {
-                console.log(data.profile)
+                console.log(data)
                 login(data.profile)
                 this.setState({ isLoading: false });
                 navigate('Main')
