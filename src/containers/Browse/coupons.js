@@ -5,13 +5,13 @@ import { connect } from 'react-redux'
 import { Spinner } from '@components'
 import { Languages, Images, Styles } from '@common'
 import VerityAPI from '@services/VerityAPI'
-import { Menu, Logo, EmptyView } from '../../navigation/IconNav'
+import { Back, Logo, EmptyView } from '../../navigation/IconNav'
 import styles from './couponsStyles'
 
 class Coupons extends Component {
 
     static navigationOptions = ({ navigation }) => ({
-        headerLeft: Menu(),
+        headerLeft: Back(navigation),
         headerTitle: Logo(),
         headerRight: EmptyView(),
         headerStyle: Styles.Common.toolbarFloat,
@@ -52,45 +52,7 @@ class Coupons extends Component {
             <View style={styles.container}>
                 <ScrollView>
                     <View style={styles.scanBoxTop}>
-                        <Text style={styles.catText}>Top Features</Text>
-                    </View>
-                    <View style={styles.arrangeColomn}>
-                        <View style={styles.catagoryContainer}>
-                            <ImageBackground
-                                source={Images.browse}
-                                style={styles.catagoryImage}>
-                                <TouchableOpacity style={styles.catBox} onPress={navigate('recalls')}>
-                                    <Text style={styles.greyTxt}>Recalls</Text>
-                                </TouchableOpacity>
-                            </ImageBackground>
-                        </View>
-                        <View style={styles.catagoryContainer}>
-                            <ImageBackground
-                                source={Images.browse}
-                                style={styles.catagoryImage}>
-                                <TouchableOpacity style={styles.catBox} onPress={navigate('user points')}>
-                                    <Text style={styles.greyTxt}>User Points</Text>
-                                </TouchableOpacity>
-                            </ImageBackground>
-                        </View>
-                        <View style={styles.catagoryContainer}>
-                            <ImageBackground
-                                source={Images.browse}
-                                style={styles.catagoryImage}>
-                                <TouchableOpacity style={styles.catBox} onPress={navigate('coupons')}>
-                                    <Text style={styles.greyTxt}>Coupons</Text>
-                                </TouchableOpacity>
-                            </ImageBackground>
-                        </View>
-                        <View style={styles.catagoryContainer}>
-                            <ImageBackground
-                                source={Images.browse}
-                                style={styles.catagoryImage}>
-                                <TouchableOpacity style={styles.catBox} onPress={navigate('citizen scientist project')}>
-                                    <Text style={styles.greyTxt}>Citizen Scientist Project</Text>
-                                </TouchableOpacity>
-                            </ImageBackground>
-                        </View>
+                        <Text style={styles.catText}>Coupons</Text>
                     </View>
                 </ScrollView>
                 {isLoading ? <Spinner mode={'overlay'} /> : null}

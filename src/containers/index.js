@@ -31,12 +31,6 @@ export const SearchDetails = _SearchDetails;
 import _Wallet from './Wallet';
 export const Wallet = _Wallet;
 
-import _Scans from './Scans';
-export const Scans = _Scans;
-
-import _Scan from './Scan';
-export const Scan = _Scan;
-
 import _Barcode from './Barcode';
 export const Barcode = _Barcode;
 
@@ -46,7 +40,7 @@ export const Messages = _Messages;
 import _Chat from './Messages/Chat';
 export const Chat = _Chat;
 
-import _Browse from './Browse';
+import _Browse from './Browse/index';
 export const Browse = _Browse;
 
 import _Recalls from './Browse/recalls';
@@ -69,3 +63,9 @@ export const Picks = _Picks;
 
 import _Pick from './Pickup13/pick';
 export const Pick = _Pick;
+
+import _AboutUs from './AboutUs';
+export const AboutUs = _AboutUs;
+
+import _Location from './Location';
+export const Location = _Location;

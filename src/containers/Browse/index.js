@@ -60,8 +60,8 @@ class Browse extends Component {
                             <ImageBackground
                                 source={Images.browse}
                                 style={styles.catagoryImage}>
-                                <TouchableOpacity style={styles.catBox} onPress={navigate('Recalls')}>
-                                    <Text style={styles.greyTxt}>Recalls</Text>
+                                <TouchableOpacity style={styles.catBox} onPress={() => navigate('Recalls')}>
+                                    <Text style={styles.greyTxt}>Recalls asdfds</Text>
                                 </TouchableOpacity>
                             </ImageBackground>
                         </View>
@@ -69,7 +69,7 @@ class Browse extends Component {
                             <ImageBackground
                                 source={Images.userPoint}
                                 style={styles.catagoryImage}>
-                                <TouchableOpacity style={styles.catBox} onPress={navigate('UserPoints')}>
+                                <TouchableOpacity style={styles.catBox} onPress={() => navigate('UserPoints')}>
                                     <Text style={styles.greyTxt}>User Points</Text>
                                 </TouchableOpacity>
                             </ImageBackground>
@@ -78,7 +78,7 @@ class Browse extends Component {
                             <ImageBackground
                                 source={Images.coupon}
                                 style={styles.catagoryImage}>
-                                <TouchableOpacity style={styles.catBox} onPress={navigate('Coupons')}>
+                                <TouchableOpacity style={styles.catBox} onPress={() => navigate('Coupons')}>
                                     <Text style={styles.greyTxt}>Coupons</Text>
                                 </TouchableOpacity>
                             </ImageBackground>
@@ -87,7 +87,7 @@ class Browse extends Component {
                             <ImageBackground
                                 source={Images.citizenscientest}
                                 style={styles.catagoryImage}>
-                                <TouchableOpacity style={styles.catBox} onPress={navigate('Citizen')}>
+                                <TouchableOpacity style={styles.catBox} onPress={() => navigate('Citizen')}>
                                     <Text style={styles.greyTxt}>Citizen Scientist Project</Text>
                                 </TouchableOpacity>
                             </ImageBackground>
