@@ -135,8 +135,16 @@ class SignUp extends Component {
     // only if user allows permission to camera roll
     if (cameraRollPerm === 'granted') {
       let pickerResult = await ImagePicker.launchImageLibraryAsync({ allowsEditing: true, aspect: [4, 3] });
-      this.setState({ profileImage: pickerResult.uri })
-      this.setState({ isLoading: false });
+      FirebaseAPI.uploadFile(pickerResult, 'profile', (success, dataUrl, error) => {
+        if (success) {
+          this.setState({ profileImage: dataUrl })
+          this.setState({ isLoading: false });
+        }
+        else if (error) {
+          this.setState({ isLoading: false });
+          return this.stopAndToast(Languages.GetDataError);
+        }
+      });
     }
   };
 
