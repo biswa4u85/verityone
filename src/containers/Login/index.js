@@ -65,7 +65,7 @@ class Login extends Component {
         const _error = this.validateForm();
         if (_error) return this.stopAndToast(_error);
 
-        const user = { email, password };
+        const user = { email: (email).toLowerCase(), password };
 
         FirebaseAuth.normalLoginApi(user, (success, data, error) => {
             if (success) {

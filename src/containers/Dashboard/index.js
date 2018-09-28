@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-// import * as firebase from 'firebase';
 import { ScrollView, ImageBackground, TouchableOpacity, TextInput, Image, View, Text } from 'react-native';
 import ModalFilterPicker from 'react-native-modal-filter-picker';
-// import SearchBar from 'react-native-search-bar';
 import { Languages, Images } from "@common";
 import { toast, error } from '@app/Omni';
 import { connect } from 'react-redux';
@@ -11,11 +9,12 @@ import FirebaseAPI from '@services/FirebaseAPI'
 import Icon from 'react-native-vector-icons/EvilIcons'
 import { Dashmenu } from '../../navigation/IconNav'
 import styles from './styles'
+import { AdMobBanner } from 'expo';
 
 // const advert = firebase.admob().interstitial('ca-app-pub-3325757019134880~7123715667');
 // const Banner = firebase.admob.Banner;
 // const AdRequest = firebase.admob.AdRequest;
-// const request = new AdRequest();g
+// const request = new AdRequest();
 // request.addKeyword('foobar');
 
 class Dashboard extends Component {
@@ -23,7 +22,6 @@ class Dashboard extends Component {
     super(props, ctx);
     this.state = {
       user: '',
-      // searchtext: '',
       picks: null,
       isLoading: false,
 
@@ -173,9 +171,9 @@ class Dashboard extends Component {
             {/* <SearchBar
               ref='searchBar'
               placeholder='Search'
-              onChangeText={...}
-              onSearchButtonPress={...}
-              onCancelButtonPress={...}
+              onChangeText={() => console.log('aa')}
+              onSearchButtonPress={() => console.log('bb')}
+              onCancelButtonPress={() => console.log('cc')}
             /> */}
 
           </ImageBackground>
@@ -199,6 +197,13 @@ class Dashboard extends Component {
               </View>
             </View>
             <View style={styles.bottomAdd}>
+              <AdMobBanner
+                bannerSize="smartBannerPortrait"
+                adUnitID="ca-app-pub-3325757019134880/3689945100" // Test ID, Replace with your-admob-unit-id
+                testDeviceID="EMULATOR"
+                onDidFailToReceiveAdWithError={() => {
+                  console.log('Advert loaded');
+                }} />
               {/* <Banner
                 unitId={'ca-app-pub-3325757019134880/3689945100'}
                 size={"SMART_BANNER"}

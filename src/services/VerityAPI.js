@@ -95,6 +95,27 @@ const VerityAPI = {
     const _url = `${url}/appMessage/?token=${token}`;
     return await request(_url);
   },
+  getConfigurationsApi: (users, callback) => {
+    return fetch(`${url}getConfigurations`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        imageType: "1",
+        userId: users.userId
+      })
+    })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        callback(true, responseJson, null)
+      })
+      .catch((error) => {
+        console.log(error)
+        callback(false, null, error)
+      });
+  },
 };
 
 export default VerityAPI;

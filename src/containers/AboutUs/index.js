@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { View, Image, ScrollView, TouchableOpacity, ImageBackground, TextInput, Text } from 'react-native'
+import { View, Image, ScrollView, TouchableOpacity, ImageBackground, FlatList, Text } from 'react-native'
 import { toast, error } from '@app/Omni';
 import { connect } from 'react-redux'
 import { Spinner } from '@components'
-import { Languages, Images, Styles } from '@common'
+import { Languages, Images, Color, Styles } from '@common'
 import VerityAPI from '@services/VerityAPI'
+import Icon from 'react-native-vector-icons/Entypo'
 import { Menu, Logo, EmptyView } from '../../navigation/IconNav'
 import styles from './styles'
 
@@ -20,9 +21,8 @@ class AboutUs extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      searchtext: '',
       isLoading: false,
-      searchResults: []
+      pageDetails: null
     }
 
     this.checkConnection = this.checkConnection.bind(this)
@@ -30,7 +30,23 @@ class AboutUs extends Component {
   }
 
   componentDidMount() {
-
+    const { user } = this.props
+    this.setState({ isLoading: true });
+    VerityAPI.getConfigurationsApi(user, (success, data, error) => {
+      if (success) {
+        for (let item of data.result.screen) {
+          if (item.screenName === 'About Us') {
+            this.setState({ pageDetails: item });
+          }
+        }
+        this.setState({ isLoading: false });
+      }
+      else if (error) {
+        console.log(error)
+        this.setState({ isLoading: false });
+        return this.stopAndToast(Languages.GetDataError);
+      }
+    });
   }
 
   checkConnection() {
@@ -45,14 +61,75 @@ class AboutUs extends Component {
     this.setState({ isLoading: false });
   }
 
-  render() {
+  openWebView = (pageName, pageLink) => {
     const { navigate } = this.props.navigation;
-    const { isLoading } = this.state
+    if (pageLink != "" && pageLink != "Location" && pageLink != null) {
+      navigate('Custompage', { 'pageName': pageName, 'url': pageLink })
+    }
+    else if (pageLink == "Location") {
+      navigate('Location')
+    }
+  }
+
+  renderItem(data) {
+    let { item, index } = data;
+    let str = "";
+    if (item.redirectUrl != "") {
+      str = ">";
+    }
+
+    return (
+      <View style={styles.flatview}>
+        <TouchableOpacity activeOpacity={1} onPress={() => this.openWebView(item.itemName, item.redirectUrl)}>
+          <View style={styles.innerView}>
+            <View style={styles.itemStyleLeft}>
+              <Text style={styles.itemLabel}>{item.itemName}</Text>
+            </View>
+            {(item.redirectUrl != "" && item.redirectUrl != "Location Summary" &&
+              <View style={styles.itemStyleRight}>
+                <Icon name={'arrow-bold-right'} size={20} color={Color.black} />
+              </View>
+            )}
+          </View>
+
+        </TouchableOpacity>
+      </View>
+    )
+  }
+
+  renderSeparator = () => {
+    return (
+      <View
+        style={{
+          height: 1,
+          width: "100%",
+          backgroundColor: "#CED0CE",
+        }}
+      />
+    );
+  };
+
+  render() {
+    const { isLoading, pageDetails } = this.state
     return (
       <View style={styles.container}>
         <ScrollView>
-          <View style={styles.scanBoxTop}>
-            <Text style={styles.catText}>About Us</Text>
+          <View>
+            <Text>{pageDetails ? pageDetails.screenName : ''}</Text>
+          </View>
+          <View style={[styles.row, styles.flatcontainer]}>
+            <FlatList
+              data={pageDetails ? pageDetails.items : null}
+              extraData={this.state}
+              showsVerticalScrollIndicator={false}
+              renderItem={this.renderItem.bind(this)}
+              keyExtractor={item => item.itemId}
+              onEndThreshold={0}
+              keyboardDismissMode="on-drag"
+              keyboardShouldPersistTaps="always"
+              refreshing={false}
+              ItemSeparatorComponent={this.renderSeparator}
+            />
           </View>
         </ScrollView>
         {isLoading ? <Spinner mode={'overlay'} /> : null}

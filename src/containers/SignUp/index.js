@@ -170,7 +170,7 @@ class SignUp extends Component {
             {...commonInputProps}
             ref="mobile"
             placeholder={Languages.mobile}
-            onChangeText={(mobile) => this.setState({ mobile })}
+            onChangeText={(mobileNumber) => this.setState({ mobileNumber })}
             onSubmitEditing={() => this.refs.email && this.refs.email.focus()}
             autoCapitalize={'words'}
             returnKeyType={'next'}

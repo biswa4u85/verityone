@@ -69,3 +69,6 @@ export const AboutUs = _AboutUs;
 
 import _Location from './Location';
 export const Location = _Location;
+
+import _Invite from './Invite';
+export const Invite = _Invite;
