@@ -29,7 +29,6 @@ class Login extends Component {
         this.validateForm = this.validateForm.bind(this);
     }
 
-
     checkConnection() {
         const { netInfo } = this.props
         if (!netInfo.isConnected) toast(Languages.noConnection)
@@ -81,28 +80,28 @@ class Login extends Component {
         });
     }
 
-    // fbSignIn() {
-    //     const { navigate } = this.props.navigation;
-    //     const { netInfo, login } = this.props;
-    //     const { isLoading } = this.state;
+    fbSignIn() {
+        const { navigate } = this.props.navigation;
+        const { netInfo, login } = this.props;
+        const { isLoading } = this.state;
 
-    //     if (!netInfo.isConnected) return toast(Languages.noConnection);
-    //     if (isLoading) return;
-    //     this.setState({ isLoading: true });
+        if (!netInfo.isConnected) return toast(Languages.noConnection);
+        if (isLoading) return;
+        this.setState({ isLoading: true });
 
-    //     FirebaseAuth.onLoginOrRegisterWithFacebook((success, data, error) => {
-    //         if (success) {
-    //             console.log(data.profile)
-    //             login(data.profile)
-    //             this.setState({ isLoading: false });
-    //             navigate('Main')
-    //         }
-    //         else if (error) {
-    //             this.setState({ isLoading: false });
-    //             return this.stopAndToast(Languages.GetDataError);
-    //         }
-    //     });
-    // }
+        FirebaseAuth.onLoginOrRegisterWithFacebook((success, data, error) => {
+            if (success) {
+                console.log(data.profile)
+                login(data.profile)
+                this.setState({ isLoading: false });
+                navigate('Main')
+            }
+            else if (error) {
+                this.setState({ isLoading: false });
+                return this.stopAndToast(Languages.GetDataError);
+            }
+        });
+    }
 
 
     goSignIn() {
@@ -173,9 +172,9 @@ class Login extends Component {
                         <TouchableOpacity onPress={() => navigate('Signup')}><Text style={styles.forgotPassword}>{Languages.signup}</Text></TouchableOpacity>
                         <Text style={styles.loginWith}>{Languages.loginWith}</Text>
                         <View style={styles.socialContener}>
-                            {/* <TouchableOpacity onPress={() => this.fbSignIn()} style={[styles.FacebookStyle]} >
+                            <TouchableOpacity onPress={() => this.fbSignIn()} style={[styles.FacebookStyle]} >
                                 <Image source={Images.fbLogin} />
-                            </TouchableOpacity> */}
+                            </TouchableOpacity>
                             <TouchableOpacity onPress={() => this.goSignIn()} style={[styles.FacebookStyle]} activeOpacity={0.5}>
                                 <Image source={Images.googleLogin} />
                             </TouchableOpacity>
