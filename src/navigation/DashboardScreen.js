@@ -11,8 +11,8 @@ export default class DashboardScreen extends PureComponent {
         return (
             <Dashboard
                 onViewSearchScreen={() => navigate('Search')}
-                onViewScanscreen={() => navigate('Scans')}
-                onViewScancreen={() => navigate('Scan')}
+                onViewScanscreen={() => navigate('PicksScreen')}
+                onViewScancreen={() => navigate('PickScreen')}
             />
         )
     }
