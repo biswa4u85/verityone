@@ -1,14 +1,12 @@
 import { auth, database } from '@common/Firebase';
 import Expo from 'expo';
-// import { AccessToken, LoginManager } from 'react-native-fbsdk';
-// import { GoogleSignin } from 'react-native-google-signin';
+import * as firebase from 'firebase';
 
 import { Config } from '@common';
 const url = Config.apiUrl;
-
-// GoogleSignin.configure({
-//     iosClientId: '874376514949-v9tb7ol7vq819k2fegtk8vlrl6loag50.apps.googleusercontent.com',
-// })
+const facebookId = "288648678174508";
+const androidGoogleClientId = '31022361841-7431bfbrm8qidpd9l7m9cldn1vd3nl65.apps.googleusercontent.com';
+const iosGoogleClientId = '31022361841-ms9vr5360tbsfa06tmd8dr1duf493e1o.apps.googleusercontent.com';
 
 class FirebaseAuth {
     checkAuth(callback) {
@@ -60,46 +58,33 @@ class FirebaseAuth {
         if (type === 'success') {
             const response = await fetch(`https://graph.facebook.com/me?access_token=${token}&fields=email,name,picture`);
             const fbData = await response.json();
-            const credential = await auth.FacebookAuthProvider.credential(token);
-            await firebase.auth().signInAndRetrieveDataWithCredential(credential)
+            const credential = await firebase.auth.FacebookAuthProvider.credential(token);
+            await auth.signInAndRetrieveDataWithCredential(credential)
                 .then((result) => {
                     const users = fbData
                     users['firebaseId'] = result.user.uid
                     this.loginApi(users, callback)
                 })
-        } else {
-            callback(false, null, null)
-        }
-    };
-    async onLoginOrRegisterWithGoogle(callback) {
-        const result = await Expo.Google.logInAsync({
-            androidClientId: '874376514949-pq4jefvgeao7mkq0v4nl5iestj4v6epg.apps.googleusercontent.com',
-            iosClientId: '874376514949-v9tb7ol7vq819k2fegtk8vlrl6loag50.apps.googleusercontent.com',
-            scopes: ['profile', 'email'],
-        });
-        if (result.type === 'success') {
-            console.log(result)
-            let firebaseData = auth.signInAndRetrieveDataWithCredential(credential);
-            // return result.accessToken;
+                .catch((error) => callback(false, null, { message: error }));
         } else {
             callback(false, null, { cancelled: true })
         }
-
-        // GoogleSignin.signIn()
-        //     .then((data) => {
-        //         const credential = auth.GoogleAuthProvider.credential(data.idToken, data.accessToken);
-        //         let firebaseData = auth.signInAndRetrieveDataWithCredential(credential);
-        //         return Promise.all([data, firebaseData]);
-        //     })
-        //     .then(([data, firebaseData]) => {
-        //         let userData = data.user
-        //         userData['uid'] = firebaseData.user._user.uid
-        //         this.loginApi(userData, callback)
-        //     })
-        //     .catch((error) => {
-        //         console.log(error)
-        //         callback(false, null, error)
-        //     });
+    };
+    async onLoginOrRegisterWithGoogle(callback) {
+        const result = await Expo.Google.logInAsync({ androidClientId: androidGoogleClientId, iosClientId: iosGoogleClientId, scopes: ['profile', 'email'] });
+        if (result.type === 'success') {
+            const { idToken, accessToken } = result;
+            const credential = await firebase.auth.GoogleAuthProvider.credential(idToken, accessToken);
+            auth.signInAndRetrieveDataWithCredential(credential)
+                .then((firebaseUserData) => {
+                    const users = result.user
+                    users['firebaseId'] = firebaseUserData.user.uid
+                    this.loginApi(users, callback)
+                })
+                .catch((error) => callback(false, null, { message: error }));
+        } else {
+            callback(false, null, { cancelled: true })
+        }
     };
     createUser(user, callback) {
         const userRef = database.ref().child('users');

@@ -31,6 +31,7 @@ class CustomPageScreen extends Component {
       login(null)
       setParms(null)
       navigate('Auth')
+      return true
     }
 
     if (typeof state.params.url != 'undefined') {
