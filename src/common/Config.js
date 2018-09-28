@@ -17,7 +17,7 @@ export default {
             icon: 'log-out',
             routeName: 'Custompage',
             params: {
-                isLogout: true
+                pageName: "Logout"
             },
         }],
         // Default List

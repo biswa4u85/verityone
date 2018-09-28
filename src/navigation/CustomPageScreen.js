@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, WebView } from 'react-native'
 import { connect } from 'react-redux';
 import { Styles } from '@common'
+import FirebaseAuth from '@services/FirebaseAuth'
 import { Back, Logo, EmptyView } from './IconNav'
 import { Spinner } from '@components'
 
@@ -20,36 +21,20 @@ class CustomPageScreen extends Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
-    const { state, navigate } = this.props.navigation;
-    if (navigate !== prevProps.navigate) {
-      if (typeof state.params.isLogout != 'undefined') {
-        this.checkLogout()
-      }
-    }
-  }
-
-  checkLogout() {
-    const { login, setParms } = this.props;
-    const { state, navigate } = this.props.navigation;
-    console.log('a')
-    // FirebaseAuth.doSignOut()
-    // login(null)
-    // setParms(null)
-    // navigate('Auth')
-    return true
-  }
 
   render() {
     const { login, setParms } = this.props;
     const { state, navigate } = this.props.navigation;
 
-    if (typeof state.params.url != 'undefined') {
-      return <WebView source={{ url: state.params.url }} />
+    if (typeof state.params.pageName != 'undefined' && state.params.pageName === 'Logout') {
+      FirebaseAuth.doSignOut()
+      login(null)
+      setParms(null)
+      navigate('Auth')
     }
 
-    if (typeof state.params.isLogout != 'undefined') {
-      this.checkLogout()
+    if (typeof state.params.url != 'undefined') {
+      return <WebView source={{ url: state.params.url }} />
     }
 
     return <Spinner mode={'overlay'} />

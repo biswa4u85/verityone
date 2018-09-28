@@ -55,29 +55,22 @@ class FirebaseAuth {
                 callback(false, null, error)
             });
     };
-    // onLoginOrRegisterWithFacebook(callback) {
-    //     LoginManager.logInWithReadPermissions(['public_profile', 'email'])
-    //         .then((result) => {
-    //             if (result.isCancelled) {
-    //                 return Promise.reject(new Error('The user cancelled the request'));
-    //             }
-    //             return AccessToken.getCurrentAccessToken();
-    //         })
-    //         .then((data) => {
-    //             const credential = auth.FacebookAuthProvider.credential(data.accessToken);
-    //             let firebaseData = auth.signInAndRetrieveDataWithCredential(credential);
-    //             return Promise.all([data, firebaseData]);
-    //         })
-    //         .then(([data, firebaseData]) => {
-    //             let userData = data.user
-    //             userData['uid'] = firebaseData.user._user.uid
-    //             this.loginApi(userData, callback)
-    //         })
-    //         .catch((error) => {
-    //             console.log(error)
-    //             callback(false, null, error)
-    //         });
-    // };
+    async  onLoginOrRegisterWithFacebook(callback) {
+        const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(facebookId, { permissions: ['public_profile', 'email'] });
+        if (type === 'success') {
+            const response = await fetch(`https://graph.facebook.com/me?access_token=${token}&fields=email,name,picture`);
+            const fbData = await response.json();
+            const credential = await auth.FacebookAuthProvider.credential(token);
+            await firebase.auth().signInAndRetrieveDataWithCredential(credential)
+                .then((result) => {
+                    const users = fbData
+                    users['firebaseId'] = result.user.uid
+                    this.loginApi(users, callback)
+                })
+        } else {
+            callback(false, null, null)
+        }
+    };
     async onLoginOrRegisterWithGoogle(callback) {
         const result = await Expo.Google.logInAsync({
             androidClientId: '874376514949-pq4jefvgeao7mkq0v4nl5iestj4v6epg.apps.googleusercontent.com',
