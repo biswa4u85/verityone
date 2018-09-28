@@ -12,6 +12,7 @@ export default {
   white: "#ffffff",
   black: "#000",
   grey: "#C7C7C7",
+  greyBg:"#f9f9f9",
 
   // bottom tab bar
   tabbar: "#ff000",

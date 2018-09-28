@@ -5,16 +5,13 @@ import { connect } from 'react-redux'
 import { Spinner } from '@components'
 import { Languages, Images, Styles } from '@common'
 import VerityAPI from '@services/VerityAPI'
-import { Back, Logo, EmptyView } from '../../navigation/IconNav'
+import { Menu, Logo, EmptyView } from '../../navigation/IconNav'
 import styles from './userPointsStyles'
 
 class UserPoints extends Component {
 
     static navigationOptions = ({ navigation }) => ({
-        headerLeft: Back(navigation),
-        headerTitle: Logo(),
-        headerRight: EmptyView(),
-        headerStyle: Styles.Common.toolbarFloat,
+        header: null
     })
 
     constructor(props) {
@@ -51,6 +48,14 @@ class UserPoints extends Component {
         return (
             <View style={styles.container}>
                 <ScrollView>
+                    <View style={styles.userPointHeader}>
+                        <View>
+                            {Menu()}
+                        </View>
+                        <View style={styles.userPointLogo}>
+                            <Image style={styles.logoImg} source={Images.userPointLogo} />
+                        </View>
+                    </View>
                     <View style={styles.scanBoxTop}>
                         <Text style={styles.catText}>Five Fevorite Products</Text>
                         <View style={styles.fevoriteProdBox}>

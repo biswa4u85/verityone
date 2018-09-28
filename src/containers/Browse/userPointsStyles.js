@@ -22,6 +22,12 @@ export default StyleSheet.create({
         padding: 20,
         fontSize: 20,
     },
+    userPointHeader:{
+        flex:1,
+        backgroundColor:Color.greyBg,
+        flexDirection:'row',
+        padding:20,
+    },
     userPointlist:{
         flexDirection:'row',
         justifyContent:'space-between',
@@ -42,5 +48,15 @@ export default StyleSheet.create({
         paddingBottom:30,
         width:'100%',
         flex:1,
+    },
+    userPointLogo:{        
+        flex:1,
+        alignItems:'center',
+        justifyContent:'center',        
+        marginVertical:15,
+    },
+    logoImg:{
+        width:100,
+        height:100,        
     }
 });

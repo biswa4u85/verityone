@@ -15,6 +15,8 @@ const Images = {
   mobIcon: require('@images/mobIcon.jpg'),
   browse: require('@images/browse.png'),
   userPoint:require('@images/userpoints.png'),
+  userPointLogo:require('@images/user-point.png'),
+  citizenLogo:require('@images/citizen-logo.png'),  
   coupon:require('@images/coupons.png'),
   citizenscientest:require('@images/citizenscientist.png'),
   chat: require('@images/chat.png'),
@@ -32,6 +34,7 @@ const Images = {
   iconScan: require('@images/icons/scan.png'),
   iconMessage: require('@images/icons/message.png'),
   iconBrowse: require('@images/icons/browse.png'),
+  iconHelp:require('@images/help-icon.png'),
 
   LogoImage: require('@images/new_logo.png'),
   LogoLoading: require('@images/app.png'),
