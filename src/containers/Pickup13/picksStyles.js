@@ -1,14 +1,53 @@
-import { Constants, Styles } from '@common'
-import { StyleSheet, Platform } from 'react-native'
+import { StyleSheet } from 'react-native'
+import { Color } from '@common'
 
 export default StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: Color.background,
+    },
+    loginContainer: {
+        flex: 1,
+        padding: 20,
+        margin: 10
+    },
+    profileWrap: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        paddingTop: 15,
+        paddingBottom: 10
+    },
+    profileImg: {
+        paddingVertical: 30,
+        width: 70,
+        height: 70,
+        borderRadius: 10
+    },
+    fab: {
+        position: 'absolute',
+        overflow: 'hidden',
+        bottom: 15,
+        right: 12,
+        height: 50,
+        width: 130,
+        padding: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 50,
+        backgroundColor: Color.botton,
+        "elevation": 5,
+        "shadowColor": "#000",
+        "shadowOpacity": 0.2,
+        "shadowRadius": 4,
+        "shadowOffset": { width: 0, height: 2 }
+    },
     fill: {
-        "flex": 1,
-        "backgroundColor": "#ffffff"
+        flex: 1,
+        backgroundColor: "#ffffff"
     },
     image: {
         flex: 1,
-        height: Styles.width / 2 - 60,
+        height: 160,
         marginTop: 5,
         marginLeft: 5,
         marginRight: 5,
@@ -33,6 +72,7 @@ export default StyleSheet.create({
         shadowRadius: 8,
         shadowOffset: { width: 0, height: 12 },
         elevation: 10,
+        margin: 5,
     },
     picDetails: {
         backgroundColor: 'white',
@@ -106,5 +146,15 @@ export default StyleSheet.create({
         flex: 1,
         width: '100%',
 
-    }
+    },
+    noDataBg: {
+        backgroundColor: '#fff',
+        width: '100%',
+        alignItems: 'center',
+        padding: 10,
+    },
+    noDataText: {
+        fontSize: 25,
+        color: '#d6d6d6',
+    },
 });

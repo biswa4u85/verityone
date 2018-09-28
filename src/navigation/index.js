@@ -4,7 +4,7 @@ import React from 'react'
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import { Color, Images, Icons } from '@common'
 import { TabBar, TabBarIcon } from '@components'
-import { Login, Forgot, SignUp, Search, Browse, Recalls, UserPoints, Coupons, Citizen, Barcode, HomeScan, Picks, Pick, AboutUs, Location } from "@containers";
+import { Login, Forgot, SignUp, Search, Browse, Recalls, UserPoints, Coupons, Citizen, Barcode, HomeScan, Picks, Pick, AboutUs, Location, Invite } from "@containers";
 
 import CustomPageScreen from './CustomPageScreen'
 import AuthScreen from './AuthScreen'
@@ -31,7 +31,6 @@ const ChatUsersStack = StackNavigator({
     Chat: ChatScreen,
 })
 
-
 const BrowseStack = StackNavigator({
     Browse: { screen: Browse },
     Recalls: { screen: Recalls },
@@ -40,12 +39,20 @@ const BrowseStack = StackNavigator({
     Citizen: { screen: Citizen }
 })
 
+const CustomPageScreenStack = StackNavigator({
+    Custompage: { screen: CustomPageScreen }
+})
+
 const AboutUsStack = StackNavigator({
     AboutUs: { screen: AboutUs }
 })
 
 const LocationStack = StackNavigator({
     Location: { screen: Location }
+})
+
+const InviteStack = StackNavigator({
+    Invite: { screen: Invite }
 })
 
 const SearchStack = StackNavigator({
@@ -88,11 +95,12 @@ const AppNavigator = TabNavigator({
                 tintColor={tintColor} />
         }
     },
-    Custompage: { screen: CustomPageScreen },
+    Custompages: { screen: CustomPageScreenStack },
     Search: { screen: SearchStack },
     SearchDetails: { screen: SearchDetailsScreen },
     AboutUs: { screen: AboutUsStack },
     Location: { screen: LocationStack },
+    Invite: { screen: InviteStack },
 },
     {
         tabBarComponent: TabBar,
@@ -161,9 +169,9 @@ const pickup13Screen = TabNavigator({
 )
 
 const MainNavigator = StackNavigator({
-    // Auth: { screen: AuthScreen },
-    // Login: { screen: Login },
-    // Forgot: { screen: Forgot },
+    Auth: { screen: AuthScreen },
+    Login: { screen: Login },
+    Forgot: { screen: Forgot },
     Signup: { screen: SignUp },
     pickup13: { screen: pickup13Screen, navigationOptions: { header: null } },
     Main: { screen: AppNavigator, navigationOptions: { header: null } },
