@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19001,
-  "packagerPort": 19002,
-  "packagerPid": 15628,
-  "expoServerNgrokUrl": "https://e7-g8z.rakesh-biswal768.verityone.exp.direct",
-  "packagerNgrokUrl": "https://packager.e7-g8z.rakesh-biswal768.verityone.exp.direct",
-  "ngrokPid": 15736
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }
