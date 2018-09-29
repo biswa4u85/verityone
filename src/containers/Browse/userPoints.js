@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { Spinner } from '@components'
 import { Languages, Images, Styles } from '@common'
 import VerityAPI from '@services/VerityAPI'
-import { Menu, Logo, EmptyView } from '../../navigation/IconNav'
+import { Back, Logo, EmptyView } from '../../navigation/IconNav'
 import styles from './userPointsStyles'
 
 class UserPoints extends Component {
@@ -50,7 +50,7 @@ class UserPoints extends Component {
                 <ScrollView>
                     <View style={styles.userPointHeader}>
                         <View>
-                            {Menu()}
+                            {Back(this.props.navigation)}
                         </View>
                         <View style={styles.userPointLogo}>
                             <Image style={styles.logoImg} source={Images.userPointLogo} />

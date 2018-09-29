@@ -4,6 +4,7 @@ import { toast, error } from '@app/Omni';
 import { connect } from 'react-redux'
 import { Spinner } from '@components'
 import { Languages, Images, Styles } from '@common'
+import Icon from 'react-native-vector-icons/EvilIcons'
 import VerityAPI from '@services/VerityAPI'
 import { Menu, Logo, EmptyView } from '../../navigation/IconNav'
 import styles from './styles'
@@ -65,11 +66,11 @@ class Invite extends Component {
     return (
       <View style={styles.container}>
         <ScrollView>
-
-          <TouchableOpacity activeOpacity={1} onPress={() => this.doInvite()}>
-            <Text style={styles.shareText} > Click To Share!</Text>
+          <View style={styles.inviteArea}>
+          <TouchableOpacity style={styles.shareIcon} activeOpacity={1} onPress={() => this.doInvite()}>
+              <Icon style={styles.shareIconSize} name="share-google"/>
           </TouchableOpacity>
-
+          </View>
         </ScrollView>
         {isLoading ? <Spinner mode={'overlay'} /> : null}
       </View>

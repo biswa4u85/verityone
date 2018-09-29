@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { View, Image, ScrollView, TouchableOpacity, ImageBackground, TextInput, Text } from 'react-native'
+import { View, Image, ScrollView, TouchableOpacity, ImageBackground, TextInput, } from 'react-native';
+import { Container, Header, Content, List, ListItem, Text, Left, Right, } from 'native-base';
+import Icon from 'react-native-vector-icons/EvilIcons'
 import { toast, error } from '@app/Omni';
 import { connect } from 'react-redux'
 import { Spinner } from '@components'
@@ -52,7 +54,31 @@ class Recalls extends Component {
             <View style={styles.container}>
                 <ScrollView>
                     <View style={styles.scanBoxTop}>
-                        <Text style={styles.catText}>Recalls</Text>
+                        <Content>
+                            <List>
+                                <ListItem  itemDivider>
+                                    <Left>
+                                        <Text>Recalls</Text>
+                                    </Left>                                    
+                                </ListItem>
+                                <ListItem >
+                                    <Left>
+                                        <Text>Nathaniel Clyne</Text>
+                                    </Left>
+                                    <Right>
+                                        <Icon style={styles.arrowIcon} name="chevron-right" />
+                                    </Right>
+                                </ListItem>
+                                <ListItem>
+                                    <Left>
+                                        <Text>Dejan Lovren</Text>
+                                    </Left>
+                                    <Right>
+                                        <Icon style={styles.arrowIcon} name="chevron-right" />
+                                    </Right>
+                                </ListItem>
+                            </List>
+                        </Content>
                     </View>
                 </ScrollView>
                 {isLoading ? <Spinner mode={'overlay'} /> : null}

@@ -6,8 +6,21 @@ import { connect } from 'react-redux'
 import { Spinner } from '@components'
 import { Languages, Images, Styles } from '@common'
 import VerityAPI from '@services/VerityAPI'
-import { Menu, Logo, EmptyView } from '../../navigation/IconNav'
+import { Back, Logo, EmptyView } from '../../navigation/IconNav'
 import styles from './citizenStyles'
+import PopupDialog, {
+    DialogTitle,
+    DialogButton,
+    SlideAnimation,
+    ScaleAnimation,
+    FadeAnimation,
+} from 'react-native-popup-dialog';
+
+const slideAnimation = new SlideAnimation({ slideFrom: 'bottom' });
+const scaleAnimation = new ScaleAnimation();
+const fadeAnimation = new FadeAnimation({ animationDuration: 150 });
+
+
 
 class Citizen extends Component {
 
@@ -47,26 +60,50 @@ class Citizen extends Component {
         this.setState({ isLoading: false });
     }
 
+    showScaleAnimationDialog = () => {
+        this.scaleAnimationDialog.show();
+    }
+
+    showSlideAnimationDialog = () => {
+        this.slideAnimationDialog.show();
+    }
+
+    showFadeAnimationDialog = () => {
+        this.fadeAnimationDialog.show();
+    }
+
     render() {
         const { navigate } = this.props.navigation;
         const { isLoading } = this.state
+
         return (
             <View style={styles.container}>
+                <PopupDialog
+                    dialogStyle={{ padding: 10, backgroundColor: 'rgba(52, 52, 52, 0)' }}
+                    ref={(popupDialog) => {
+                        this.scaleAnimationDialog = popupDialog;
+                    }}
+                    dialogAnimation={scaleAnimation}>
+                    <View style={styles.popupBg}>
+                        <Text style={styles.popupTxt}>Definition : A citizen scientist is an individual who voluntarily contributes his or her time, effort, and resources toward scientific research in collaboration with professional scientists or alone. These individuals don't necessarily have a formal science background.</Text>
+                        <Text style={styles.popupTxt}>This Product is in Alpha Stages and will be released in future updates.</Text>
+                    </View>
+                </PopupDialog>
                 <ScrollView>
                     <View style={styles.userPointHeader}>
                         <View>
-                            {Menu()}
+                            {Back(this.props.navigation)}
                         </View>
                         <View style={styles.citizenLogo}>
                             <Image style={styles.logoImg} source={Images.citizenLogo} />
                         </View>
                         <View>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => this.showScaleAnimationDialog()}>
                                 <Image source={Images.iconHelp} />
                             </TouchableOpacity>
                         </View>
                     </View>
-                    <Tabs>
+                    <Tabs tabBarUnderlineStyle={{ backgroundColor: '#007aff' }}>
                         <Tab heading={<TabHeading style={styles.tabBg}><Text style={styles.tabTxt}>The Project</Text></TabHeading>}>
                             <View>
                                 <Text style={styles.contentTitle}>Welcome to Citizen-Scientist project</Text>
@@ -82,7 +119,7 @@ class Citizen extends Component {
                                     <Text style={styles.contentTxt}>5.Galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</Text>
                                 </View>
                                 <View style={styles.helpPopupBox}>
-                                    <TouchableOpacity>
+                                    <TouchableOpacity onPress={() => this.showScaleAnimationDialog()}>
                                         <Image source={Images.iconHelp} />
                                     </TouchableOpacity>
                                     <Text style={styles.helpIconCapt}>Click this icon for more information!</Text>
@@ -92,7 +129,17 @@ class Citizen extends Component {
                         </Tab>
                         <Tab heading={<TabHeading style={styles.tabBg}><Text style={styles.tabTxt}>Your Impact</Text></TabHeading>}>
                             <View>
-                                <Text>Nothing here</Text>
+                                <View style={styles.bodyBg}>
+                                    <Image style={styles.pageIcon} source={Images.chat} />
+                                    <Text style={styles.textTitle}>Nothing here</Text>                                    
+                                </View>
+                                <View style={styles.helpPopupBox}>
+                                    <TouchableOpacity onPress={() => this.showScaleAnimationDialog()}>
+                                        <Image source={Images.iconHelp} />
+                                    </TouchableOpacity>
+                                    <Text style={styles.helpIconCapt}>Click this icon for more information!</Text>
+                                </View>
+                                <Text style={styles.concluTxt}>This project is Alpha and will be released in future updates.</Text>
                             </View>
                         </Tab>
                     </Tabs>

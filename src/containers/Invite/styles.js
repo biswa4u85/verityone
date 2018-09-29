@@ -19,5 +19,22 @@ export default StyleSheet.create({
         "paddingTop": Platform.OS == 'android' ? 0: 30,
         "backgroundColor": "#eee",
         "flex": 1
+    },
+    shareIcon:{
+        alignItems:'center',
+        justifyContent:'center',
+        backgroundColor:Color.white,
+        borderRadius:35,
+        width:70,
+        height:70,
+    },
+    shareIconSize:{
+        fontSize:50,
+        color:Color.black,
+    },
+    inviteArea:{
+        alignItems:'center',
+        justifyContent:'center',
+        paddingTop:100,
     }
 });

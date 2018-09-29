@@ -35,6 +35,10 @@ export default StyleSheet.create({
         color: '#C7C7C7',
         fontSize: 14,
     },
+    shoppPointIcon:{
+        color: '#C7C7C7',
+        fontSize:24,
+    },
     dashLogo: {
         paddingVertical:15,
         alignItems: 'center',

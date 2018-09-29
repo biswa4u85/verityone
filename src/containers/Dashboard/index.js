@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ScrollView, ImageBackground, TouchableOpacity, TextInput, Image, View, Text } from 'react-native';
+// import { Icon } from 'native-base';
 import ModalFilterPicker from 'react-native-modal-filter-picker';
 import { Languages, Images } from "@common";
 import { toast, error } from '@app/Omni';
@@ -153,6 +154,7 @@ class Dashboard extends Component {
               <View>
                 <TouchableOpacity style={styles.shoppingPoint} onPress={this.onShow}>
                   <Text style={styles.shoppPointText}>Shopping in 33431 </Text>
+                  <Icon style={styles.shoppPointIcon} name="chevron-down" />
                 </TouchableOpacity>
                 <Text>{picked}</Text>
                 <ModalFilterPicker

@@ -39,7 +39,8 @@ export default StyleSheet.create({
         backgroundColor: '#f7f7f7'
     },
     tabTxt: {
-        color: '#000',
+        fontSize:18,
+        color:Color.black,
     },
     tabBorder: {
         borderRightWidth: 2,
@@ -90,5 +91,33 @@ export default StyleSheet.create({
         paddingHorizontal:10,        
         color:Color.grey,
         marginVertical:15,
+    },
+    popupBg:{
+        backgroundColor:Color.white,
+        paddingHorizontal:20,
+        paddingVertical:15,
+        borderRadius:10,
+    },
+    popupTxt:{
+        fontSize:16,
+        lineHeight:20,
+        marginBottom:15,
+    },
+    bodyBg: {
+        flex: 2,
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 20,
+    },
+    pageIcon: {
+        width: 120,
+        height: 120,
+    },
+    textTitle: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#9c9c9c',
+        paddingTop: 20,
+        paddingBottom: 10,
     },
 });

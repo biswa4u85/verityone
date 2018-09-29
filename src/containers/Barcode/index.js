@@ -70,11 +70,19 @@ class Barcode extends Component {
             return <Text>No access to camera</Text>;
         }
         return (
-            <View style={{ flex: 1 }}>
+            <View style={styles.container}>
+                <View style={styles.headerArea}></View>
+                <View>
                 <BarCodeScanner
                     onBarCodeScanned={this.handleBarCodeScanned}
                     style={StyleSheet.absoluteFill}
                 />
+                </View>
+                <View style={styles.footerArea}>
+                    <Text>Place Barcode / QR In The Box</Text>
+                    <Image source={Images.nfc} />
+                    <Text>Try NFC</Text>
+                </View>
             </View>
         );
     }
