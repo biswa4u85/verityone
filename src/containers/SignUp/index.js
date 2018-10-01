@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, TextInput, Image } from 'react-native';
+import { Content, Form, Item, Input, Label } from 'native-base';
+import Icon from 'react-native-vector-icons/EvilIcons';
 import { Languages, Images, Color, Styles } from "@common";
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import RadioForm from 'react-native-simple-radio-button';
@@ -162,9 +164,14 @@ class SignUp extends Component {
     const { isLoading, genderType, name, mobileNumber, email, password, birthDay } = this.state;
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.containerPadding}>
-          <Text style={styles.label}>{Languages.profileDetail}</Text>
-          <TextInput
+        <ScrollView style={styles.containerPadding}> 
+        <View style={styles.profileWrap}>            
+            <TouchableOpacity onPress={this._takePhoto}>
+              {this.renderProfileImage()}
+            </TouchableOpacity>
+            <Text style={styles.profileText}>{Languages.profileImg}</Text>
+          </View>         
+          {/* <TextInput
             {...commonInputProps}
             ref="name"
             placeholder={Languages.name}
@@ -201,8 +208,48 @@ class SignUp extends Component {
             secureTextEntry={true}
             returnKeyType={'go'}
             value={password}
-          />
-          <View style={styles.calendarWrap}>
+          /> */}
+          <Form>
+            <Item style={styles.profileInputBox} stackedLabel>
+            <View style={styles.labelBox}>
+              <Label>First Name</Label>
+              <Input />
+              </View>
+              <Icon style={styles.arrowIcon} name="chevron-right" />
+            </Item>
+            <Item style={styles.profileInputBox} stackedLabel>
+            <View style={styles.labelBox}>
+              <Label>Last Name</Label>
+              <Input />
+              </View>
+              <Icon style={styles.arrowIcon} name="chevron-right" />
+            </Item>
+            <Item style={styles.profileInputBox} stackedLabel>
+            <View style={styles.labelBox}>
+              <Label>Phone Number</Label>
+              <Input />
+              </View>
+              <Icon style={styles.arrowIcon} name="chevron-right" />
+            </Item>
+            <Item style={styles.profileInputBox} stackedLabel>
+              <View style={styles.labelBox}>
+              <Label>Email</Label>
+              <Input />
+              </View>
+              <Icon style={styles.arrowIcon} name="chevron-right" />
+            </Item>
+            <Item style={styles.profileInputBox} stackedLabel>
+              <View style={styles.labelBox}>
+              <Label>Password</Label>
+              <Input />
+              </View>
+              <Icon style={styles.arrowIcon} name="chevron-right" />
+            </Item>            
+          </Form>
+          <TouchableOpacity style={styles.signUpButton} onPress={this.onSignUpHandle.bind(this)}>
+              <Text style={styles.btnTxt}>{Languages.signup}</Text>
+          </TouchableOpacity>
+          {/* <View style={styles.calendarWrap}>
             <Image source={Images.calendar} />
             <TouchableOpacity onPress={this._showDateTimePicker}>
               <Text style={styles.dobLabel}>{birthDay}</Text>
@@ -225,19 +272,12 @@ class SignUp extends Component {
               labelStyle={styles.radioLable}
               onPress={(genderType) => this.setState({ genderType })}
             />
-          </View>
-          <View style={styles.profileWrap}>
-            <Button onPress={this._takePhoto} title="Take a photo" />
-            <TouchableOpacity onPress={this._takePhoto}>
-              {this.renderProfileImage()}
-            </TouchableOpacity>
-            <Text style={styles.profileText}>{Languages.profileImg}</Text>
-          </View>
-          <Button
+          </View> */}          
+          {/* <Button
             containerStyle={styles.signUpButton}
             text={Languages.signup}
             onPress={this.onSignUpHandle.bind(this)}
-          />
+          /> */}
         </ScrollView>
         {isLoading ? <Spinner mode={'overlay'} /> : null}
       </View>

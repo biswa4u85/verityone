@@ -60,6 +60,7 @@ export default StyleSheet.create({
         paddingBottom: 15,
     },
     searchBox: {
+        width:'100%',
         backgroundColor: '#fff',
         borderRadius: 4,
         flexDirection: 'row',
@@ -73,6 +74,9 @@ export default StyleSheet.create({
         marginRight: 10,
         width: 19,
         height: 19,
+    },
+    searchBar:{
+        width:'100%',        
     },
     contentBox: {
         backgroundColor: '#F7F7F7',
@@ -163,4 +167,5 @@ export default StyleSheet.create({
         fontSize: 25,
         color: '#d6d6d6',
     },
+    
 });

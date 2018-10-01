@@ -150,7 +150,6 @@ class Dashboard extends Component {
             {Dashmenu('white')}
             <View style={{ alignItems: 'center' }}>
               <Text style={styles.pageTitle}>Verity One</Text>
-              {/* <TouchableOpacity style={styles.shoppingPoint}><Text style={styles.shoppPointText}>Shopping in 33431</Text></TouchableOpacity> */}
               <View>
                 <TouchableOpacity style={styles.shoppingPoint} onPress={this.onShow}>
                   <Text style={styles.shoppPointText}>Shopping in 33431 </Text>
@@ -169,14 +168,14 @@ class Dashboard extends Component {
               <Image style={styles.dashLogoSize} source={Images.dashBoardLogo} />
             </View>
 
-
-            {/* <SearchBar
-              ref='searchBar'
-              placeholder='Search'
-              onChangeText={() => console.log('aa')}
-              onSearchButtonPress={() => console.log('bb')}
-              onCancelButtonPress={() => console.log('cc')}
-            /> */}
+            <View style={styles.searchBox}>
+              <Image style={styles.searchImg} source={Images.searchImg} />
+              <TextInput
+                underlineColorAndroid="transparent"
+                placeholder={"Search Verity"}
+                style={styles.searchBar}
+              />
+            </View>
 
           </ImageBackground>
           <View style={styles.contentBox}>

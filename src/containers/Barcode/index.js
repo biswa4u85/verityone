@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 // import Camera from 'react-native-camera'
-import { View, Image, ScrollView, TouchableOpacity, TextInput, Text, StyleSheet } from 'react-native'
+import { View, Image, ScrollView, TouchableOpacity, TextInput, Text, StyleSheet, } from 'react-native'
+import { Icon } from 'native-base';
 import { toast, error, Validate } from '@app/Omni';
 import { connect } from 'react-redux'
 import Parallax from 'react-native-parallax'
@@ -71,17 +72,28 @@ class Barcode extends Component {
         }
         return (
             <View style={styles.container}>
-                <View style={styles.headerArea}></View>
-                <View>
-                <BarCodeScanner
-                    onBarCodeScanned={this.handleBarCodeScanned}
-                    style={StyleSheet.absoluteFill}
-                />
+                <View style={styles.topSearchArea}>
+                    <TextInput
+                        placeholder={"Search..."}
+                        style={styles.searchBar}
+                        onChangeText={(text) => this.setState({ text })}
+                        value={this.state.text}
+                    />
+                    <TouchableOpacity>
+                        <Icon style={styles.flashIcon} name='flash' />                       
+                    </TouchableOpacity>
+                </View>
+                <Text style={styles.scanTitle}>Please Scan</Text>
+                <View style={{ height: 250, }}>
+                    <BarCodeScanner
+                        onBarCodeScanned={this.handleBarCodeScanned}
+                        style={StyleSheet.absoluteFill}
+                    />
                 </View>
                 <View style={styles.footerArea}>
-                    <Text>Place Barcode / QR In The Box</Text>
-                    <Image source={Images.nfc} />
-                    <Text>Try NFC</Text>
+                    <Text style={styles.barTitle}>Place Barcode / QR In The Box</Text>
+                    <Image style={styles.nfcImg} source={Images.nfc} />
+                    <Text style={styles.nfcTxt}>Try NFC</Text>
                 </View>
             </View>
         );

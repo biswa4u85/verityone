@@ -7,7 +7,7 @@ export default StyleSheet.create({
         backgroundColor: Color.background,
     },
     containerPadding: {
-        padding: 30,
+
     },
     label: {
         fontWeight: 'bold',
@@ -53,19 +53,37 @@ export default StyleSheet.create({
     profileWrap: {
         flexDirection: 'column',
         alignItems: 'center',
-        paddingTop: 15,
+        paddingTop: 5,
         paddingBottom: 10
     },
     profileImg: {
         paddingVertical: 30,
-        width: 70,
-        height: 70,
+        width: 50,
+        height: 50,
         borderRadius: 10
     },
     signUpButton: {
-        marginTop: 20,
+        paddingVertical:10,
+        marginVertical:10,
+        marginHorizontal:15,
         backgroundColor: Color.primary,
         borderRadius: 5,
         elevation: 1,
+    },
+    btnTxt:{
+        fontSize:18,
+        color:Color.white,
+        textAlign:'center',
+        fontWeight:'bold',
+    },
+    profileInputBox:{
+        flexDirection:'row',
+        alignItems:'center',
+    },
+    arrowIcon:{
+        fontSize:32,
+    },
+    labelBox:{
+        width:'90%',
     },
 });

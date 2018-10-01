@@ -78,9 +78,18 @@ class Search extends Component {
         const { isLoading, searchtext, searchResults } = this.state
         return (
             <View style={styles.container}>
-                <View style={styles.searchBox}>
-                    <Image style={styles.searchImg1} source={Images.searchImg} />
-                    <TextInput style={{ height: 40, width: '100%', textAlign: 'left' }} value={search} onSubmitEditing={this._search.bind(this)} placeholder="Search Verity" onChangeText={(searchtext) => this.setState({ searchtext })} />
+                <View style={styles.searchArea}>                                      
+                    <TextInput
+                        underlineColorAndroid="transparent"
+                        placeholder={"Search here"}
+                        style={styles.searchBar}
+                        value={search} 
+                        onSubmitEditing={this._search.bind(this)}                        
+                        onChangeText={(searchtext) => this.setState({ searchtext })}
+                    />
+                    <TouchableOpacity style={styles.searchBtn}>
+                        <Text style={styles.searchBtnTxt}>Search</Text>
+                    </TouchableOpacity>
                 </View>
                 <ScrollView>
                     <View style={styles.logoContainer}>

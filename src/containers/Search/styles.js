@@ -113,4 +113,34 @@ export default StyleSheet.create({
         color: '#000',
         fontWeight: 'bold',
     },
+
+    searchBar:{
+        height: 40,
+        width:'65%', 
+        paddingHorizontal:10, 
+        borderColor: 'gray', 
+        borderWidth: 1,
+        borderColor:'#808787',
+        fontSize:18,
+        marginRight:15,
+        borderRadius:4,
+    },
+    searchArea:{
+        flexDirection:'row',
+        alignItems:'center',
+        marginVertical:15,
+        marginHorizontal:10,
+    },
+    searchBtn:{
+        borderRadius:4,
+        borderWidth:1,
+        borderColor:'#808787',
+        paddingVertical:8,
+        width:'30%'
+    },
+    searchBtnTxt:{
+        fontSize:18,
+        color:'#808787',
+        textAlign:'center',
+    },
 });

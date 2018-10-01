@@ -31,7 +31,7 @@ export default StyleSheet.create({
         position: 'absolute',
         width: '100%',
         height: 60,
-        top: 60,
+        top: 0,
         left: 0,
     },
     privateBg: {
